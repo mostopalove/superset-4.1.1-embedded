@@ -25,6 +25,27 @@ This repository contains the source code of **[Apache Superset 4.1.1](https://gi
 - Superset **[v4.1.1](https://github.com/apache/superset/releases/tag/4.1.1)** source code.
 - Updated [configurations](https://github.com/mostopalove/superset-4.1.1-embedded/blob/main/docker/pythonpath_dev/superset_config.py) for **embedding dashboards**.
 
+## 🔑 Guest Token Authentication
+To successfully embed a dashboard, ensure that the **guest token request body** includes a list of resources, specifying the dashboard UUID:
+
+```json
+{
+  "resources": [
+    {
+      "type": "dashboard",
+      "id": "your-dashboard-uuid"
+    }
+  ],
+  "user": {
+    "username": "guest-user-username",
+    "first_name": "guest-user-first-name",
+    "last_name": "guest-user-last-name"
+  },
+  "rls": []
+}
+```
+
+
 # Superset
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
