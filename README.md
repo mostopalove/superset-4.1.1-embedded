@@ -17,6 +17,14 @@ specific language governing permissions and limitations
 under the License.
 -->
 
+# Superset 4.1.1 Embedded Mode Configuration
+
+This repository contains the source code of **[Apache Superset 4.1.1](https://github.com/apache/superset/releases/tag/4.1.1)** along with custom configuration settings to enable running dashboards in **embedded mode**.
+
+## 🔧 What's Included
+- Superset **[v4.1.1](https://github.com/apache/superset/releases/tag/4.1.1)** source code.
+- Updated [configurations](https://github.com/mostopalove/superset-4.1.1-embedded/blob/main/docker/pythonpath_dev/superset_config.py) for **embedding dashboards**.
+
 # Superset
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)

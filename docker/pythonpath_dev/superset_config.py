@@ -71,7 +71,43 @@ CACHE_CONFIG = {
 }
 DATA_CACHE_CONFIG = CACHE_CONFIG
 
+GUEST_ROLE_NAME = "Gamma"
+PUBLIC_ROLE_LIKE = "Gamma"
 
+TALISMAN_ENABLED = True
+# React requires `eval` to work correctly in dev mode
+TALISMAN_DEV_CONFIG = {
+    "content_security_policy": {
+        "base-uri": ["'self'"],
+        "default-src": ["'self'"],
+        "img-src": [
+            "'self'",
+            "blob:",
+            "data:",
+            "https://apachesuperset.gateway.scarf.sh",
+            "https://static.scarf.sh/",
+            "https://avatars.slack-edge.com",
+            "ows.terrestris.de",
+        ],
+        "worker-src": ["'self'", "blob:"],
+        "connect-src": [
+            "'self'",
+            "https://api.mapbox.com",
+            "https://events.mapbox.com",
+        ],
+        "object-src": "'none'",
+        "style-src": [
+            "'self'",
+            "'unsafe-inline'",
+        ],
+        "script-src": ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+        "script-src-elem": ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+    },
+    "content_security_policy_nonce_in": ["script-src"],
+    "force_https": False,
+    "session_cookie_secure": False,
+    "frame_options": "ALLOWALL",
+}
 
 class CeleryConfig:
     broker_url = f"redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_CELERY_DB}"
@@ -98,7 +134,10 @@ class CeleryConfig:
 
 CELERY_CONFIG = CeleryConfig
 
-FEATURE_FLAGS = {"ALERT_REPORTS": True}
+FEATURE_FLAGS = {
+    "ALERT_REPORTS": True,
+    "EMBEDDED_SUPERSET": True,
+}
 ALERT_REPORTS_NOTIFICATION_DRY_RUN = True
 WEBDRIVER_BASEURL = "http://superset:8088/"  # When using docker compose baseurl should be http://superset_app:8088/
 # The base URL for the email report hyperlinks.
